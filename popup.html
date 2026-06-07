@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: system-ui, sans-serif; width: 320px; padding: 15px; margin: 0; }
+        button { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; color: white;}
+        #auto-fetch-btn { background-color: #10b981; }
+        #auto-fetch-btn:hover { background-color: #059669; }
+        #auto-fetch-btn:disabled { background-color: #9ca3af; cursor: not-allowed; }
+        #clear-btn { background-color: #ef4444; margin-top: 10px; }
+        #clear-btn:hover { background-color: #dc2626; }
+        #export-pdf-btn { background-color: #1e3a8a; margin-top: 10px; }
+        #export-pdf-btn:hover { background-color: #1e40af; }
+        
+        .range-box { display: flex; justify-content: space-between; margin-bottom: 10px; background: #f3f4f6; padding: 10px; border-radius: 6px; }
+        .range-group { display: flex; flex-direction: column; width: 45%; }
+        .range-group label { font-size: 12px; font-weight: bold; color: #4b5563; margin-bottom: 4px; }
+        .range-group input { padding: 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 14px; text-align: center; }
+
+        /* Adjusted layout to perfectly space the 3 remaining checkboxes */
+        .filter-box { display: flex; justify-content: space-between; background: #f3f4f6; padding: 10px; border-radius: 6px; margin-bottom: 10px; }
+        .filter-box label { font-size: 13px; color: #374151; display: flex; align-items: center; cursor: pointer;}
+        .filter-box input { margin-right: 6px; cursor: pointer;}
+
+        .ast-box { background: #f3f4f6; padding: 10px; border-radius: 6px; margin-bottom: 10px; }
+        .ast-box label { font-size: 13px; color: #374151; display: flex; align-items: center; cursor: pointer;}
+        .ast-box input { margin-right: 6px; cursor: pointer;}
+
+        .result-box { background: #f3f4f6; padding: 12px; border-radius: 6px; margin-top: 10px;}
+        .result-box p { margin: 8px 0; color: #374151;}
+        .highlight { font-weight: bold; color: #1e3a8a; float: right;}
+        .status-box { font-size: 0.85em; color: #4b5563; text-align: center; margin-bottom: 10px; min-height: 20px;}
+    </style>
+</head>
+<body>
+    <h3 style="text-align:center; margin-top:0; color: #111827;">NU GWA Calculator</h3>
+    
+    <div class="range-box">
+        <div class="range-group">
+            <label>From Year:</label>
+            <input type="number" id="start-year" value="2023">
+        </div>
+        <div class="range-group">
+            <label>To Year:</label>
+            <input type="number" id="end-year" value="2026">
+        </div>
+    </div>
+
+    <div class="filter-box">
+        <label><input type="checkbox" id="chk-1" checked> 1st Term</label>
+        <label><input type="checkbox" id="chk-2" checked> 2nd Term</label>
+        <label><input type="checkbox" id="chk-3" checked> 3rd Term</label>
+    </div>
+
+    <div class="ast-box">
+        <label><input type="checkbox" id="chk-ast"> Include Excluded (*) Subjects</label>
+    </div>
+
+    <button id="auto-fetch-btn">Pre-load Selected Range</button>
+    <div id="status-msg" class="status-box">Ready.</div>
+
+    <div class="result-box">
+        <p>Units Counted in GWA: <span id="total-units" class="highlight">--</span></p>
+        <p>Calculated GWA: <span id="cumulative-gwa" class="highlight">--</span></p>
+    </div>
+    
+    <button id="export-pdf-btn">Export Records to PDF</button>
+    <button id="clear-btn">Clear Saved History</button>
+
+    <script src="popup.js"></script>
+</body>
+</html>
